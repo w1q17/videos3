@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import boto3
+from botocore.config import Config
 from botocore.exceptions import ClientError
 
 # Загружаем переменные окружения из .env файла
@@ -16,12 +17,16 @@ class MinioManager:
     def _connect_to_minio(self):
         """Создание подключения к MinIO"""
         try:
+            s3_config = Config(
+                signature_version='s3v4'
+            )
+            
             s3_client = boto3.client(
                 's3',
                 endpoint_url=self.endpoint,
                 aws_access_key_id=self.access_key,
                 aws_secret_access_key=self.secret_key,
-                config=boto3.Config(signature_version='s3v4'),
+                config=s3_config,
                 verify=False  # Для самоподписанных сертификатов
             )
             print("Успешное подключение к MinIO")
