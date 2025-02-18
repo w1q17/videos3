@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видео S3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .video-list {
+            margin-top: 20px;
+        }
+        .video-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Вход в систему</h2>
+        <input type="email" id="email" placeholder="Email" value="rumden@tpu.ru">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+        <div id="error" class="error"></div>
+    </div>
+    <div id="video-container" class="video-list" style="display: none;">
+        <h2>Видео в бакете: <span id="bucket-name"></span></h2>
+        <div id="videos"></div>
+    </div>
+    <script src="/static/main.js"></script>
+</body>
+</html> 
